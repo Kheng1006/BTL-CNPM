@@ -1,0 +1,81 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
+        
+        <!-- title of site -->
+        <title>SSPS</title>
+		
+        <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="/assets/logo/HCMUT.png"/>
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="/assets/css/bootsnav.css" >	
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="/assets/css/history.css">
+    </head>
+	
+	<body>
+		<header class="top-area">
+			<div class="header-area">
+				<!-- Start Navigation -->
+			    <nav class="navbar navbar-default bootsnav navbar-fixed dark no-background">
+			        <div class="container">
+			            <div class="navbar-header">
+			                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+			                    <i class="fa fa-bars"></i>
+			                </button>
+			                <img class="logo" src="/assets/logo/HCMUT.png">
+			            </div><!--/.navbar-header-->
+						<p class="headline"> LỊCH SỬ IN </p>
+			    </nav><!--/nav-->
+			    <!-- End Navigation -->
+			</div><!--/.header-area-->
+		</header><!-- /.top-area-->
+
+		<section id="welcome-hero" class="welcome-hero">
+			<div class="container">
+                <h1>LỊCH SỬ IN</h1>
+                <div class="timkiem">
+                    <label for="documentName">TÌM KIẾM TÀI LIỆU ĐÃ IN: </label>
+                    <input type="text" id="documentName" />
+                    <button onclick="searchDocumentByName()">TÌM KIẾM</button>
+                    
+                    <label for="printDate">NGÀY IN: </label>
+                    <input type="date" id="printDate" />
+                    <button onclick="searchDocumentByPrintDate()">TÌM KIẾM</button>
+                </div>
+                <table id="printingHistory">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>MSSV (ID)</th>
+                            <th>TÀI LIỆU IN</th>
+                            <th>SỐ TRANG IN</th>
+                            <th>NGÀY IN</th>
+                            <th>THỜI GIAN IN</th>
+                            <th>LOẠI MÁY IN</th>
+                            <th>LOẠI TRANG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table rows will be dynamically added here using JavaScript -->
+                    </tbody>
+                    <script src="/assets/js/history2.js"></script>
+                </table>
+            </div>
+		</section> <!--/.welcome-hero -->
+    </body>
+</html>

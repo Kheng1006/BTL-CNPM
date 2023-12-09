@@ -1,0 +1,98 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
+        
+        <!-- title of site -->
+        <title>SSPS</title>
+		
+        <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="/assets/logo/HCMUT.png"/>
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="/assets/css/bootsnav.css" >	
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="/assets/css/style.css">
+    </head>
+	
+	<body>
+		<header>
+            <nav>
+                <a href="home.html" style="padding-left: 5vw;"><img class="logo" src="/assets/logo/HCMUT.png"></a>
+                <p class="headline"> CHỌN MÁY IN </p>
+                <div>
+                    <a href="upload.html"><img class="logo" src="/assets/images/button/image1.png"></a>
+                    <a href="choosefile.html"><img class="logo" src="/assets/images/button/image2.png"></a>
+                    <a href="history.html"><img class="logo" src="/assets/images/button/image3.png"></a>
+                </div>
+            </nav><!--/nav-->
+        </header><!-- /.top-area-->
+
+		<section id="welcome-hero" class="welcome-hero">
+			<div class="rectangle" style="height: 70%;">
+                <div class="button-container">
+                    <button class="button" onclick="handleButtonClick(true)">
+                        <img src="/assets/images/button/available.png">
+                        <br>
+                        <p class="button-caption">Canon 111</p>
+                    </button>
+        
+                    <button class="button" onclick="handleButtonClick(false)">
+                        <img src="/assets/images/button/not-available.png">
+                        <br>
+                        <p class="button-caption">Canon 222</p>
+                    </button>
+        
+                    <button class="button" onclick="handleButtonClick(false)">
+                        <img src="/assets/images/button/not-available.png">
+                        <br>
+                        <p class="button-caption">Canon 333</p>
+                    </button>
+                </div>
+                <div class="button-container">
+                    <button class="button" onclick="handleButtonClick(true)">
+                        <img src="/assets/images/button/available.png">
+                        <br>
+                        <p class="button-caption">Canon 444</p>
+                    </button>
+        
+                    <button class="button" onclick="handleButtonClick(false)">
+                        <img src="/assets/images/button/not-available.png">
+                        <br>
+                        <p class="button-caption">Canon 555</p>
+                    </button>
+        
+                    <button class="button" onclick="handleButtonClick(true)">
+                        <img src="/assets/images/button/available.png">
+                        <br>
+                        <p class="button-caption">Canon 666</p>
+                    </button>
+                </div>
+            </div>
+            <script>
+                function handleButtonClick(isImg1) {
+                    if (isImg1) {
+                        // Do something specific for img1
+                        alert('Successfully print');
+                        window.location.href = 'home.html';
+                    } else {
+                        // Do something specific for img2
+                        alert('Please choose another printer');
+                    }
+                }
+            </script>
+		</section>
+    </body>
+</html>
