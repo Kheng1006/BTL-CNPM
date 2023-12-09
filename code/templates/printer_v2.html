@@ -15,16 +15,16 @@
         <title>Fabric</title>
 		
         <!-- For favicon png -->
-		<link rel="shortcut icon" type="image/icon" href="/assets/logo/HCMUT.png"/>
+		<link rel="shortcut icon" type="image/icon" href="../assets/logo/HCMUT.png"/>
 		
         <!--bootstrap.min.css-->
-        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 		
 		<!-- bootsnav -->
-		<link rel="stylesheet" href="/assets/css/bootsnav.css" >	
+		<link rel="stylesheet" href="../assets/css/bootsnav.css" >	
         
         <!--style.css-->
-        <link rel="stylesheet" href="/assets/css/printer_v2.css">
+        <link rel="stylesheet" href="../assets/css/printer_v2.css">
     </head>
 	
 	<body>
@@ -37,7 +37,7 @@
 			                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 			                    <i class="fa fa-bars"></i>
 			                </button>
-			                <img class="logo" src="/assets/logo/HCMUT.png">
+			                <img class="logo" src="../assets/logo/HCMUT.png">
 			            </div><!--/.navbar-header-->
 						<p class="headline"> STUDENT SMART PRINTING SERVICE </p>
 			    </nav><!--/nav-->
@@ -49,38 +49,38 @@
 			<div class="rectangle" style="height: 70%;">
                 <div class="button-container">
                     <button class="button" onclick="handleButtonClick(true)">
-                        <img src="/assets/images/button/available.png">
+                        <img src="../assets/images/button/available.png">
                         <br>
                         <p class="button-caption">Canon 111</p>
                     </button>
         
                     <button class="button" onclick="handleButtonClick(false)">
-                        <img src="/assets/images/button/not-available.png">
+                        <img src="../assets/images/button/not-available.png">
                         <br>
                         <p class="button-caption">Canon 222</p>
                     </button>
         
                     <button class="button" onclick="handleButtonClick(false)">
-                        <img src="/assets/images/button/not-available.png">
+                        <img src="../assets/images/button/not-available.png">
                         <br>
                         <p class="button-caption">Canon 333</p>
                     </button>
                 </div>
                 <div class="button-container">
                     <button class="button" onclick="handleButtonClick(true)">
-                        <img src="/assets/images/button/available.png">
+                        <img src="../assets/images/button/available.png">
                         <br>
                         <p class="button-caption">Canon 444</p>
                     </button>
         
                     <!-- <button class="button" onclick="handleButtonClick(false)">
-                        <img src="/assets/images/button/not-available.png">
+                        <img src="../assets/images/button/not-available.png">
                         <br>
                         <p class="button-caption">Canon 555</p>
                     </button>
         
                     <button class="button" onclick="handleButtonClick(true)">
-                        <img src="/assets/images/button/available.png">
+                        <img src="../assets/images/button/available.png">
                         <br>
                         <p class="button-caption">Canon 666</p>
                     </button> -->
@@ -160,7 +160,7 @@
             };
 
             var newImg = document.createElement('img');
-            newImg.src = isAvailable ? '/assets/images/button/available.png' : '/assets/images/button/not-available.png';
+            newImg.src = isAvailable ? '../assets/images/button/available.png' : '../assets/images/button/not-available.png';
 
             var newCaption = document.createElement('p');
             newCaption.className = 'button-caption';
@@ -182,7 +182,7 @@
             };
 
             var newImg = document.createElement('img');
-            newImg.src = isAvailable ? '/assets/images/button/available.png' : '/assets/images/button/not-available.png';
+            newImg.src = isAvailable ? '../assets/images/button/available.png' : '../assets/images/button/not-available.png';
 
             var newCaption = document.createElement('p');
             newCaption.className = 'button-caption';
@@ -273,7 +273,7 @@
             if (buttonCaption === printerNameToChange) {
                 // Change the availability status
                 var buttonImg = button.querySelector('img');
-                buttonImg.src = newIsAvailable ? '/assets/images/button/available.png' : '/assets/images/button/not-available.png';
+                buttonImg.src = newIsAvailable ? '../assets/images/button/available.png' : '../assets/images/button/not-available.png';
 
                 alert('Availability for printer ' + printerNameToChange + ' changed to ' + newAvailabilityInput + '.');
                 availabilityChanged = true;

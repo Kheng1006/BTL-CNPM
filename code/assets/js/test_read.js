@@ -1,4 +1,4 @@
-const filePath = './assets/js/pages.txt';
+const filePath = '../assets/js/pages.txt';
 const fs = require('fs');
 // Read the content of the file
 fs.readFile(filePath, 'utf8', (err, data) => {
