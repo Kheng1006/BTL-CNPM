@@ -39,7 +39,7 @@
 			                </button>
 			                <img class="logo" src="../assets/logo/HCMUT.png">
 			            </div><!--/.navbar-header-->
-						<p class="headline"> LỊCH SỬ IN </p>
+						<p class="headline"> HOME </p>
                 </nav><!--/nav-->
 			    <!-- End Navigation -->
 			</div><!--/.header-area-->
@@ -65,8 +65,48 @@
                         <br>
                         <p class="button-caption">Xem lịch sử in</p>
                     </button>
+                    <button class="button" onclick="validateAndUpload()">
+                        <img src="../assets/images/button/file.png" width="150px" height="100px">
+                        <br>
+                        <p class="button-caption">Quản lí loại file</p>
+                    </button>
                 </div>
             </div>
 		</section>
+
+
+        <script>
+            function validateAndUpload() {
+    const allowedFileTypes = prompt("Enter allowed file types (comma-separated, e.g., .pdf, .doc, .ppt)");
+
+    if (allowedFileTypes === null) {
+        // User pressed Cancel
+        return;
+    }
+
+    // const fileInput = document.createElement('input');
+    // fileInput.type = 'file';
+    // fileInput.style.display = 'none';
+    // fileInput.onchange = function() {
+    //     const allowedFileTypesArray = allowedFileTypes.split(',').map(type => type.trim());
+
+    //     if (fileInput.files.length > 0) {
+    //         const fileName = fileInput.files[0].name;
+    //         const fileExtension = '.' + fileName.split('.').pop().toLowerCase();
+
+    //         if (allowedFileTypesArray.includes(fileExtension)) {
+    //             // File type is allowed, you can proceed with uploading.
+    //             alert('File is allowed. Implement your upload logic here.');
+    //         } else {
+    //             // File type is not allowed.
+    //             alert('Invalid file type. Please choose a valid file.');
+    //         }
+    //     }
+    // };
+
+    // Trigger the file input click event
+    fileInput.click();
+}
+            </script>
     </body>
 </html>
