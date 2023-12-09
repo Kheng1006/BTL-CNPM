@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
+        
+        <!-- title of site -->
+        <title>SSPS</title>
+		
+        <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="/assets/logo/HCMUT.png"/>
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="/assets/css/bootsnav.css" >	
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="/assets/css/history.css">
+        
+
+        <!-- Add this line to include Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    </head>
+	
+	<body>
+		<header>
+            <nav>
+                <a href="home.html" style="padding-left: 5vw;"><img class="logo" src="/assets/logo/HCMUT.png"></a>
+                <p class="headline"> Chọn trong các file có sẵn</p>
+                <div>
+                    <a href="upload.html"><img class="logo" src="/assets/images/button/image1.png"></a>
+                    <a href="choosefile.html"><img class="logo" src="/assets/images/button/image2.png"></a>
+                    <a href="history.html"><img class="logo" src="/assets/images/button/image3.png"></a>
+                </div>
+            </nav><!--/nav-->
+    </header><!-- /.top-area-->
+        
+		<section id="welcome-hero" class="welcome-hero">
+			<div class="container">
+                <h1>Danh sách file</h1>
+                <div id="pageStatus" class="page-status">
+                    SỐ TRANG CÒN LẠI: <span id="remainingPages"></span> | SỐ TRANG ĐÃ IN: <span id="printedPages"></span>
+                    <button onclick="window.location.href='addPages.html'"> Add pages </button>
+                </div>
+                <div class="timkiem">
+                    <label for="documentName">TÌM KIẾM TÀI LIỆU ĐÃ IN: </label>
+                    <input type="text" id="documentName" />
+                    <button onclick="searchDocumentByName()">TÌM KIẾM</button>
+                    
+                    <label for="printDate">NGÀY UP: </label>
+                    <input type="date" id="printDate" />
+                    <button onclick="searchDocumentByPrintDate()">TÌM KIẾM</button>
+                </div>
+                <table id="printingHistory">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>MSSV (ID)</th>
+                            <th>TÀI LIỆU IN</th>
+                            <th>NGÀY UP</th>
+                            <th>THỜI GIAN UP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table rows will be dynamically added here using JavaScript -->
+                    </tbody>
+                    <script src="/assets/js/choosefile.js"></script>
+
+                    <script>
+                        let pages = localStorage.getItem('pages');
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const remainingPagesFromURL = parseInt(urlParams.get('remainingPages'), 10) || 0;
+                        pages = parseInt(pages) + parseInt(remainingPagesFromURL);
+                        localStorage.setItem('pages', pages);
+                        document.getElementById('remainingPages').innerHTML = String(pages);
+                        document.getElementById('printedPages').innerHTML = localStorage.getItem('pagesPrinted');
+                    </script>
+                </table>
+            </div>
+		</section> <!--/.welcome-hero -->
+    </body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
+        
+        <!-- title of site -->
+        <title>SSPS</title>
+		
+        <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="/assets/logo/HCMUT.png"/>
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="/assets/css/bootsnav.css" >	
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <style>
+            .dropdown-container {
+                padding-top: 100px;
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+                margin-top: 20px;
+                margin-left: 100px;
+            }
+            .dropdown-group {
+                margin-bottom: 15px;
+            }
+
+            /* Style for the dropdown labels */
+            label {
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+            /* Style for each individual dropdown */
+            .dropdown {
+                padding: 8px;
+                font-size: 16px;
+                border: 1px solid #007bff;
+                border-radius: 10px;
+                background-color: #fff;
+                color: #333;
+                width: 200px;
+                box-sizing: border-box;
+                margin: 10px;
+            }
+
+            /* Style for the dropdown when focused or hovered */
+            .dropdown:focus,
+            .dropdown:hover {
+                outline: none;
+                border-color: #007bff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            }
+        </style>
+    </head>
+	
+	<body>
+		<header>
+            <nav>
+                <a href="home.html" style="padding-left: 5vw;"><img class="logo" src="/assets/logo/HCMUT.png"></a>
+                <p class="headline"> PREVIEW </p>
+                <div>
+                    <a href="upload.html"><img class="logo" src="/assets/images/button/image1.png"></a>
+                    <a href="choosefile.html"><img class="logo" src="/assets/images/button/image2.png"></a>
+                    <a href="history.html"><img class="logo" src="/assets/images/button/image3.png"></a>
+                </div>
+            </nav><!--/nav-->
+    </header><!-- /.top-area-->
+
+		<section class="welcome-hero">
+            <div class="container-fluid" style="background-color: aliceblue; border-radius: 10px; height: 80%; width: 80%;">
+                <div class="row" style="height: 100%;">
+                    <div class="col-md-6" style="height: 100%;">
+                        <div class="dropdown-container">
+                            <div class="dropdown-group">
+                                <label for="dropdown1">Số bảng sao :</label>
+                                <input id="dropdown1" type="number" class="text-input" style="width: 44px;border-radius: 10px; padding: 5px;border: 1px solid #007bff;"> 
+                            </div>
+                            <div class="dropdown-group">
+                                <label for="dropdown2">Cỡ trang :</label>
+                                <select class="dropdown" id="dropdown2" style="width: 60px;">
+                                    <option value="option4">A3</option>
+                                    <option value="option5">A4</option>
+                                </select>
+                            </div>
+                    
+                            <div class="dropdown-group">
+                                <label for="dropdown3">Số mặt :</label>
+                                <select class="dropdown" id="dropdown3" style="width: 50px;">
+                                    <option value="option7">1</option>
+                                    <option value="option8">2</option>
+                                </select>
+                            </div>
+                    
+                            <div class="dropdown-group">
+                                <label for="dropdown4">Số trang:</label>
+                                <input id="dropdown4" type="number" class="text-input" style="width: 44px;border-radius: 10px; padding: 5px;border: 1px solid #007bff;">
+                            </div>
+                    
+                            <div class="dropdown-group">
+                                <label for="dropdown5">Custom:</label>
+                                <input id="dropdown5" type="text" class="text-input" style="width: 200px;border-radius: 10px; padding: 5px;border: 1px solid #007bff;">
+                            </div>
+                        </div>
+                        <div class="button" style="color: #333; text-align: center; width: 200px; margin-left: 35%; margin-top: 100px;">
+                            <button onclick="validateAndNavigate()">Choose printer</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="height: 100%;">
+                        <iframe id="pdfPreview" width="100%" height="100%"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+		</section>
+
+        <script>
+            // Read the file name from the URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const fileName = urlParams.get('fileName');
+
+            // Set the src attribute of the iframe with the file name
+            if (fileName) {
+                // const fileUrl = '' + fileName;
+                const fileUrl = './test_doc/' + fileName;
+                document.getElementById('pdfPreview').src = fileUrl;
+            }
+        </script>
+        <script src="/assets/js/preview.js"> </script>
+    </body>
+</html>

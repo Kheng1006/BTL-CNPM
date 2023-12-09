@@ -1,0 +1,295 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
+        
+        <!-- title of site -->
+        <title>Fabric</title>
+		
+        <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="/assets/logo/HCMUT.png"/>
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="/assets/css/bootsnav.css" >	
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="/assets/css/printer_v2.css">
+    </head>
+	
+	<body>
+		<header class="top-area">
+			<div class="header-area">
+				<!-- Start Navigation -->
+			    <nav class="navbar navbar-default bootsnav navbar-fixed dark no-background">
+			        <div class="container">
+			            <div class="navbar-header">
+			                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+			                    <i class="fa fa-bars"></i>
+			                </button>
+			                <img class="logo" src="/assets/logo/HCMUT.png">
+			            </div><!--/.navbar-header-->
+						<p class="headline"> STUDENT SMART PRINTING SERVICE </p>
+			    </nav><!--/nav-->
+			    <!-- End Navigation -->
+			</div><!--/.header-area-->
+		</header><!-- /.top-area-->
+
+		<section id="welcome-hero" class="welcome-hero">
+			<div class="rectangle" style="height: 70%;">
+                <div class="button-container">
+                    <button class="button" onclick="handleButtonClick(true)">
+                        <img src="/assets/images/button/available.png">
+                        <br>
+                        <p class="button-caption">Canon 111</p>
+                    </button>
+        
+                    <button class="button" onclick="handleButtonClick(false)">
+                        <img src="/assets/images/button/not-available.png">
+                        <br>
+                        <p class="button-caption">Canon 222</p>
+                    </button>
+        
+                    <button class="button" onclick="handleButtonClick(false)">
+                        <img src="/assets/images/button/not-available.png">
+                        <br>
+                        <p class="button-caption">Canon 333</p>
+                    </button>
+                </div>
+                <div class="button-container">
+                    <button class="button" onclick="handleButtonClick(true)">
+                        <img src="/assets/images/button/available.png">
+                        <br>
+                        <p class="button-caption">Canon 444</p>
+                    </button>
+        
+                    <!-- <button class="button" onclick="handleButtonClick(false)">
+                        <img src="/assets/images/button/not-available.png">
+                        <br>
+                        <p class="button-caption">Canon 555</p>
+                    </button>
+        
+                    <button class="button" onclick="handleButtonClick(true)">
+                        <img src="/assets/images/button/available.png">
+                        <br>
+                        <p class="button-caption">Canon 666</p>
+                    </button> -->
+                </div>
+                    <div class="button-function">
+                        <button id="addButton" class="action-button" onclick="addDynamicButton()">Add Printer</button>
+                        <button id="deleteButtonByName" class="action-button" onclick="deleteButtonByName()">Delete Printer</button>
+                        <button id="changeAvailabilityButton" class="action-button" onclick="changeAvailabilityByName()">Change Status of Printer</button>
+                    </div>
+            </div>
+            <script>
+                function handleButtonClick(isImg1) {
+                    if (isImg1) {
+                        // Do something specific for img1
+                        alert('Successfully print');
+                        window.location.href = 'home.html';
+                    } else {
+                        // Do something specific for img2
+                        alert('Please choose another printer');
+                    }
+                }
+                function addDynamicButton() {
+        // Prompt the user for printer name
+        var printerName = prompt('Enter the name of the printer:');
+        if (!printerName) {
+            alert('Printer name cannot be empty. Please try again.');
+            return; // Exit if the user cancels or enters an empty name
+        }
+
+        
+    // Check if a button with the same name already exists
+    var existingButtons = document.querySelectorAll('.button-caption');
+    for (var i = 0; i < existingButtons.length; i++) {
+        if (existingButtons[i].textContent.trim().toUpperCase() === printerName.trim().toUpperCase()) {
+            alert('Printer with the name ' + printerName + ' already exists. Please enter a different name.');
+            return;
+        }
+    }
+
+        var isAvailable;
+
+        // Loop to repeatedly prompt for availability until a valid input is given
+        while (true) {
+            // Prompt the user for availability status
+            var availabilityInput = prompt('Is the printer available? (yes/no)');
+            if (!availabilityInput) {
+                alert('Availability input cannot be empty. Please try again.');
+                continue; // Restart the loop if the user cancels or enters an empty input
+            }
+
+            // Check if the input is valid (either "yes" or "no")
+            if (availabilityInput.toLowerCase() === 'yes') {
+                isAvailable = true;
+                break; // Exit the loop if "yes" is entered
+            } else if (availabilityInput.toLowerCase() === 'no') {
+                isAvailable = false;
+                break; // Exit the loop if "no" is entered
+            } else {
+                alert('Invalid input. Please enter either "yes" or "no".');
+            }
+        }
+
+        // Log printer details to the console
+        console.log('Adding printer - Name:', printerName, 'Available:', isAvailable);
+
+        // Select the first and second containers with class 'button-container'
+        var firstContainer = document.querySelectorAll('.button-container')[0];
+        var secondContainer = document.querySelectorAll('.button-container')[1];
+
+        // Check if the first container has less than 3 buttons
+        if (firstContainer.children.length < 3) {
+            // Create a new button element for the first container
+            var newButton = document.createElement('button');
+            newButton.className = 'button';
+            newButton.onclick = function () {
+                handleButtonClick(isAvailable, printerName);
+            };
+
+            var newImg = document.createElement('img');
+            newImg.src = isAvailable ? '/assets/images/button/available.png' : '/assets/images/button/not-available.png';
+
+            var newCaption = document.createElement('p');
+            newCaption.className = 'button-caption';
+            newCaption.textContent = printerName;
+
+            newButton.appendChild(newImg);
+            newButton.appendChild(document.createElement('br'));
+            newButton.appendChild(newCaption);
+
+            // Append the new button to the first container
+            firstContainer.appendChild(newButton);
+        } else {
+            // If the first container has 3 or more buttons, add to the second container
+            // Create a new button element for the second container
+            var newButton = document.createElement('button');
+            newButton.className = 'button';
+            newButton.onclick = function () {
+                handleButtonClick(isAvailable, printerName);
+            };
+
+            var newImg = document.createElement('img');
+            newImg.src = isAvailable ? '/assets/images/button/available.png' : '/assets/images/button/not-available.png';
+
+            var newCaption = document.createElement('p');
+            newCaption.className = 'button-caption';
+            newCaption.textContent = printerName;
+
+            newButton.appendChild(newImg);
+            newButton.appendChild(document.createElement('br'));
+            newButton.appendChild(newCaption);
+
+            // Append the new button to the second container
+            secondContainer.appendChild(newButton);
+        }
+    }
+    function deleteButtonByName() {
+        // Select all containers with class 'button-container'
+        var dynamicButtonContainers = document.querySelectorAll('.button-container');
+
+        // Prompt the user for the button name to delete
+        var buttonNameToDelete = prompt('Enter the name of the button you want to delete:');
+        if (!buttonNameToDelete) {
+            alert('Button name cannot be empty. Please try again.');
+            return; // Exit if the user cancels or enters an empty name
+        }
+
+        var buttonDeleted = false;
+
+        // Iterate through all containers
+        dynamicButtonContainers.forEach(function (container) {
+            // Iterate through the buttons in each container
+            for (var i = container.children.length - 1; i >= 0; i--) {
+                var button = container.children[i];
+                var buttonCaption = button.querySelector('.button-caption').textContent;
+
+                if (buttonCaption === buttonNameToDelete) {
+                    // Remove the button
+                    container.removeChild(button);
+                    alert('Button ' + buttonNameToDelete + ' deleted.');
+                    buttonDeleted = true;
+                    break; // Exit the loop after deleting the button
+                }
+            }
+        });
+
+        // If no matching button is found in any container
+        if (!buttonDeleted) {
+            alert('Button ' + buttonNameToDelete + ' not found.');
+        }
+    }
+
+    function changeAvailabilityByName() {
+    // Prompt the user for the printer name to change availability
+    var printerNameToChange = prompt('Enter the name of the printer to change availability:');
+    if (!printerNameToChange) {
+        alert('Printer name cannot be empty. Please try again.');
+        return; // Exit if the user cancels or enters an empty name
+    }
+
+    // Prompt the user for the new availability status
+    var newAvailabilityInput = prompt('Enter the new availability status (enable/disable):');
+    if (!newAvailabilityInput) {
+        alert('Availability input cannot be empty. Please try again.');
+        return; // Exit if the user cancels or enters an empty input
+    }
+
+    // Check if the input is valid (either "yes" or "no")
+    var newIsAvailable;
+    if (newAvailabilityInput.toLowerCase() === 'enable') {
+        newIsAvailable = true;
+    } else if (newAvailabilityInput.toLowerCase() === 'disable') {
+        newIsAvailable = false;
+    } else {
+        alert('Invalid input. Please enter either "enable" or "disable".');
+        return;
+    }
+
+    // Select all containers with class 'button-container'
+    var dynamicButtonContainers = document.querySelectorAll('.button-container');
+
+    var availabilityChanged = false;
+
+    // Iterate through all containers
+    dynamicButtonContainers.forEach(function (container) {
+        // Iterate through the buttons in each container
+        for (var i = container.children.length - 1; i >= 0; i--) {
+            var button = container.children[i];
+            var buttonCaption = button.querySelector('.button-caption').textContent;
+
+            if (buttonCaption === printerNameToChange) {
+                // Change the availability status
+                var buttonImg = button.querySelector('img');
+                buttonImg.src = newIsAvailable ? '/assets/images/button/available.png' : '/assets/images/button/not-available.png';
+
+                alert('Availability for printer ' + printerNameToChange + ' changed to ' + newAvailabilityInput + '.');
+                availabilityChanged = true;
+                break; // Exit the loop after changing availability
+            }
+        }
+    });
+
+    // If no matching printer is found in any container
+    if (!availabilityChanged) {
+        alert('Printer ' + printerNameToChange + ' not found.');
+    }
+}
+
+
+            </script>
+		</section>
+    </body>
+</html>

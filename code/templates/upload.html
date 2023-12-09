@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
+        
+        <!-- title of site -->
+        <title>SSPS</title>
+		
+        <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="/assets/logo/HCMUT.png"/>
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="/assets/css/bootsnav.css" >	
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="/assets/css/style.css">
+
+        <style>
+            .container-upload {
+                max-width: 600px;
+                margin: 50px auto;
+                background-color: aliceblue;
+                padding: 30px;
+                text-align: center;
+                border: 1px solid #007bff;
+                border-radius: 10px;
+            }
+
+            .upload-container {
+                text-align: center;
+}
+        </style>
+    </head>
+	
+	<body>
+		<header>
+            <nav>
+                <a href="home.html" style="padding-left: 5vw;"><img class="logo" src="/assets/logo/HCMUT.png"></a>
+                <p class="headline"> UPLOAD </p>
+                <div>
+                    <a href="upload.html"><img class="logo" src="/assets/images/button/image1.png"></a>
+                    <a href="choosefile.html"><img class="logo" src="/assets/images/button/image2.png"></a>
+                    <a href="history.html"><img class="logo" src="/assets/images/button/image3.png"></a>
+                </div>
+            </nav><!--/nav-->
+    </header><!-- /.top-area-->
+
+		<section id="welcome-hero" class="welcome-hero">
+            <div class="container-upload">
+                <div class="upload-container">
+                    <input type="file" id="fileInput" onchange="handleFile()">
+                </div>
+            </div>
+        
+            <script>
+                function handleFile() {
+                    const fileInput = document.getElementById('fileInput');
+                    const fileName = fileInput.files[0].name;
+                    const encodedFileName = encodeURIComponent(fileName);
+                    window.location.href = "preview.html?fileName=" + encodedFileName;
+                }
+            </script>
+		</section>
+    </body>
+</html>
